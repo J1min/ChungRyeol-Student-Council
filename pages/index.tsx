@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import * as S from "../styles/style";
 import useStore from "../context/useStore";
-import { POST_URL } from "../constant/URL";
+import { POST_URL, ADMIN_VOTE_PASSWORD } from "../constant/URL";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -12,12 +12,18 @@ const Home: NextPage = () => {
   const {
     name,
     result,
+    votePassword,
   }: {
     name: string;
     result: string;
+    votePassword: string;
   } = useStore();
 
-  const vote = () => {
+  const vote = (votePassword: string) => {
+    if (votePassword !== ADMIN_VOTE_PASSWORD) {
+      alert("투표 비밀번호가 일치하지 않습니다.");
+      return;
+    }
     axios.post(POST_URL, { name: name, result: result }).then(() => {
       router.push("/result");
     });
@@ -26,7 +32,13 @@ const Home: NextPage = () => {
   return (
     <S.Container>
       <Form />
-      <S.LoginButton onClick={vote}>투표하기</S.LoginButton>
+      <S.LoginButton
+        onClick={() => {
+          vote(votePassword);
+        }}
+      >
+        투표하기
+      </S.LoginButton>
     </S.Container>
   );
 };
@@ -35,9 +47,11 @@ const Form: NextPage = () => {
   const {
     setName,
     setResult,
+    setVotePassword,
   }: {
     setName: any;
     setResult: any;
+    setVotePassword: any;
   } = useStore();
 
   return (
@@ -71,6 +85,17 @@ const Form: NextPage = () => {
             placeholder="찬성 / 반대를 직접 입력해주세요."
             onChange={(e: any) => {
               setResult(e.target.value);
+            }}
+            required
+          />
+        </S.FormElement>
+        <S.FormElement>
+          <S.LoginLabel>투표 비밀번호</S.LoginLabel>
+          <S.LoginInput
+            type="text"
+            placeholder="진행자가 알려준 비밀번호를 입력하세요."
+            onChange={(e: any) => {
+              setVotePassword(e.target.value);
             }}
             required
           />
