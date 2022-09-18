@@ -1,7 +1,12 @@
 import React from "react";
 import type { NextPage } from "next";
 import axios from "axios";
-import { DELETE_URL, GET_URL, ADMIN_PASSWORD } from "../../constant/URL";
+import {
+  DELETE_URL,
+  GET_URL,
+  ADMIN_PASSWORD,
+  GET_VOTE_URL,
+} from "../../constant/URL";
 import * as S from "../../styles/style";
 
 type Student = {
@@ -12,6 +17,9 @@ type Student = {
 const Result: NextPage = () => {
   const [result, setResult] = React.useState<Student[]>();
   const [password, setPassword] = React.useState<string>("");
+
+  const [agree, setAgree] = React.useState<string>("");
+  const [disAgree, setDisAgree] = React.useState<string>("");
 
   const refresh = () => {
     if (password !== ADMIN_PASSWORD) {
@@ -26,9 +34,18 @@ const Result: NextPage = () => {
   React.useEffect(() => {
     axios.get(GET_URL).then((res) => {
       setResult(res.data.result);
+
       console.log(res.data.result);
     });
   }, []);
+
+  React.useEffect(() => {
+    axios.get(GET_VOTE_URL).then((res) => {
+      setAgree(res.data.agree);
+      setDisAgree(res.data.disagree);
+    });
+  }, []);
+
   return (
     <>
       <S.LoginInput
@@ -43,6 +60,10 @@ const Result: NextPage = () => {
       <S.LoginButton onClick={refresh} style={{ width: "100px" }}>
         초기화
       </S.LoginButton>
+      <S.StyledUl>
+        <S.StyledLi>찬성 : {agree}</S.StyledLi>
+        <S.StyledLi>반대 : {disAgree}</S.StyledLi>
+      </S.StyledUl>
       {result?.map((data, idx) => {
         return (
           <S.StyledUl key={idx}>

@@ -13,6 +13,12 @@ export default async function handler(
   let { db } = await connectToDatabase();
   const collection = db.collection<User>("vote-result");
   const result = await collection.find().toArray();
+  let agree = 0;
+  let disAgree = 0;
+
+  for (const r in result) {
+    console.log(r);
+  }
 
   res.status(200).json({ result });
 }

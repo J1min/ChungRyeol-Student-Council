@@ -42,20 +42,18 @@ const Form: NextPage = () => {
   return (
     <>
       <S.MainText>충렬학생의회 본투표</S.MainText>
-      <S.GoRank href="/rank" style={{ marginTop: "30px" }}>
-        충렬학생의회 직급 확인
-      </S.GoRank>
-      <S.GoRank href="/result" style={{ marginTop: "10px" }}>
+
+      <S.GoRank href="/result" style={{ marginTop: "30px" }}>
         투표 결과 보기
       </S.GoRank>
 
       <S.TopBar />
       <S.FormContainer>
         <S.FormElement>
-          <S.LoginLabel>직급</S.LoginLabel>
+          <S.LoginLabel>이름</S.LoginLabel>
           <S.LoginInput
             type="text"
-            placeholder="본인의 직급을 입력해주세요."
+            placeholder="본인의 이름을 입력해주세요."
             onChange={(e: any) => {
               setName(e.target.value);
             }}
