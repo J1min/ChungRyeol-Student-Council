@@ -105,6 +105,7 @@ const Form: NextPage = () => {
           />
         </S.FormElement>
       </S.FormContainer>
+      <p>Copyright © BSSM J1min All rights reserved.</p>
     </>
   );
 };
