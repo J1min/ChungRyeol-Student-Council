@@ -51,18 +51,6 @@ const Result: NextPage = () => {
 
   return (
     <>
-      <S.LoginInput
-        style={{ margin: "30px auto" }}
-        type="password"
-        placeholder="관리자 비밀번호를 입력해주세요."
-        onChange={(e: any) => {
-          setPassword(e.target.value);
-        }}
-        required
-      />
-      <S.LoginButton onClick={refresh} style={{ width: "100px" }}>
-        초기화
-      </S.LoginButton>
       <S.StyledUl>
         <S.StyledLi>찬성 : {agree}</S.StyledLi>
         <S.StyledLi>반대 : {disAgree}</S.StyledLi>
@@ -84,6 +72,18 @@ const Result: NextPage = () => {
           </S.StyledUl>
         );
       })}
+      <S.LoginInput
+        style={{ margin: "30px auto", width: "200px" }}
+        type="password"
+        placeholder="관리자 비밀번호"
+        onChange={(e: any) => {
+          setPassword(e.target.value);
+        }}
+        required
+      />
+      <S.LoginButton onClick={refresh} style={{ width: "100px" }}>
+        초기화
+      </S.LoginButton>
     </>
   );
 };
