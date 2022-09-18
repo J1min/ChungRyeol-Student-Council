@@ -58,7 +58,7 @@ const Result: NextPage = () => {
       setDisAgree(parseInt(res.data[1])); // 반대
       setGiveUp(parseInt(res.data[2])); // 기권
     });
-  }, 2000);
+  }, 10000);
 
   return (
     <>
