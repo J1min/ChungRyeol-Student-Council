@@ -19,12 +19,14 @@ export const StyledLi = styled.li`
 export const StyledUl = styled.ul`
   display: flex;
   justify-content: space-around;
+  padding: 0;
 `;
 
 export const LoginInput = styled.input`
   display: block;
   box-sizing: border-box;
   width: 300px;
+
   height: 10px;
   margin: 10px 0;
   padding: 20px 20px;
