@@ -1,4 +1,4 @@
-const URL = "https://chung-ryeol-student-council.vercel.app/";
+const URL = "https://chung-ryeol-student-council.vercel.app/api";
 
 export const GET_URL = `${URL}/getData`;
 export const GET_VOTE_URL = `${URL}/getVoteData`;
