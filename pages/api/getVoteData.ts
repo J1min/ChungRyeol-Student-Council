@@ -24,5 +24,5 @@ export default async function handler(
     }
   }
 
-  res.status(200).json([agree, disAgree]);
+  return res.status(200).json([agree, disAgree]);
 }

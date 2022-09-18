@@ -18,6 +18,8 @@ export const StyledLi = styled.li`
 
 export const StyledUl = styled.ul`
   display: flex;
+  width: 500px;
+  margin: 40px auto;
   justify-content: space-around;
   padding: 0;
 `;

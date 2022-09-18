@@ -14,5 +14,5 @@ export default async function handler(
   const collection = db.collection<User>("vote-result");
   const result = await collection.find().toArray();
 
-  res.status(200).json({ result });
+  return res.status(200).json({ result });
 }

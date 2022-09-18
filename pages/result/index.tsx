@@ -20,8 +20,8 @@ const Result: NextPage = () => {
   const [result, setResult] = React.useState<Student[]>();
   const [password, setPassword] = React.useState<string>("");
 
-  const [agree, setAgree] = React.useState<string>("");
-  const [disAgree, setDisAgree] = React.useState<string>("");
+  const [agree, setAgree] = React.useState<number>(0);
+  const [disAgree, setDisAgree] = React.useState<number>(0);
 
   const router = useRouter();
 
@@ -46,8 +46,8 @@ const Result: NextPage = () => {
 
   React.useEffect(() => {
     axios.get(GET_VOTE_URL).then((res) => {
-      setAgree(res.data[0]); // 찬성
-      setDisAgree(res.data[1]); // 반대
+      setAgree(parseInt(res.data[0])); // 찬성
+      setDisAgree(parseInt(res.data[1])); // 반대
     });
   }, []);
 
@@ -60,6 +60,7 @@ const Result: NextPage = () => {
         <S.StyledLi>찬성 : {agree}</S.StyledLi>
         <S.StyledLi>반대 : {disAgree}</S.StyledLi>
       </S.StyledUl>
+
       {result?.map((data, idx) => {
         return (
           <S.StyledUl key={idx}>
