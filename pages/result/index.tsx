@@ -57,7 +57,6 @@ const Result: NextPage = () => {
       </Head>
 
       <Chart agree={agree} disAgree={disAgree} />
-
       <S.ResultContainer>
         {result?.map((data, idx) => {
           return (
@@ -65,9 +64,9 @@ const Result: NextPage = () => {
               key={idx}
               style={
                 data.result === "찬성"
-                  ? { color: "blue" }
+                  ? { color: "#0044ff" }
                   : data.result === "반대"
-                  ? { color: "red" }
+                  ? { color: "#f63e3e" }
                   : { color: "black" }
               }
             >
