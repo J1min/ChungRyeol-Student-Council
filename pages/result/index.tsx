@@ -61,19 +61,18 @@ const Result: NextPage = () => {
       <S.ResultContainer>
         {result?.map((data, idx) => {
           return (
-            <S.StyledUl key={idx}>
-              <S.StyledLi
-                style={
-                  data.result === "찬성"
-                    ? { color: "blue" }
-                    : data.result === "반대"
-                    ? { color: "red" }
-                    : { color: "black" }
-                }
-              >
-                {data.name}
-              </S.StyledLi>
-            </S.StyledUl>
+            <S.StyledLi
+              key={idx}
+              style={
+                data.result === "찬성"
+                  ? { color: "blue" }
+                  : data.result === "반대"
+                  ? { color: "red" }
+                  : { color: "black" }
+              }
+            >
+              {data.name}
+            </S.StyledLi>
           );
         })}
       </S.ResultContainer>

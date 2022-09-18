@@ -11,7 +11,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.black};
 `;
 
-export const StyledLi = styled.li`
+export const StyledLi = styled.p`
   list-style: none;
   text-align: center;
 `;
@@ -111,5 +111,5 @@ export const GoRank = styled.a`
 
 export const ResultContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
 `;
