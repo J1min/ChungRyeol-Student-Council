@@ -37,6 +37,10 @@ const Result: NextPage = () => {
     });
   };
 
+  setInterval(function () {
+    router.reload();
+  }, 2000);
+
   React.useEffect(() => {
     axios.get(GET_URL).then((res) => {
       setResult(res.data.result);
