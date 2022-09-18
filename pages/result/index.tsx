@@ -38,7 +38,13 @@ const Result: NextPage = () => {
   };
 
   setInterval(function () {
-    router.reload();
+    axios.get(GET_URL).then((res) => {
+      setResult(res.data.result);
+    });
+    axios.get(GET_VOTE_URL).then((res) => {
+      setAgree(parseInt(res.data[0])); // 찬성
+      setDisAgree(parseInt(res.data[1])); // 반대
+    });
   }, 2000);
 
   React.useEffect(() => {
