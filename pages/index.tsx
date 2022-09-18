@@ -105,7 +105,6 @@ const Form: NextPage = () => {
           />
         </S.FormElement>
       </S.FormContainer>
-      제작 : 부산소마고 홍지민
     </>
   );
 };
