@@ -43,6 +43,9 @@ const Home: NextPage = () => {
       >
         투표하기
       </S.LoginButton>
+      <p style={{ color: "black", textAlign: "center" }}>
+        Copyright © BSSM J1min All rights reserved.
+      </p>
     </S.Container>
   );
 };
@@ -105,7 +108,6 @@ const Form: NextPage = () => {
           />
         </S.FormElement>
       </S.FormContainer>
-      <p>Copyright © BSSM J1min All rights reserved.</p>
     </>
   );
 };
