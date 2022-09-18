@@ -49,16 +49,16 @@ const Result: NextPage = () => {
     });
   }, []);
 
-  setInterval(function () {
-    axios.get(GET_URL).then((res) => {
-      setResult(res.data.result);
-    });
-    axios.get(GET_VOTE_URL).then((res) => {
-      setAgree(parseInt(res.data[0])); // 찬성
-      setDisAgree(parseInt(res.data[1])); // 반대
-      setGiveUp(parseInt(res.data[2])); // 기권
-    });
-  }, 10000);
+  // setInterval(function () {
+  //   axios.get(GET_URL).then((res) => {
+  //     setResult(res.data.result);
+  //   });
+  //   axios.get(GET_VOTE_URL).then((res) => {
+  //     setAgree(parseInt(res.data[0])); // 찬성
+  //     setDisAgree(parseInt(res.data[1])); // 반대
+  //     setGiveUp(parseInt(res.data[2])); // 기권
+  //   });
+  // }, 10000);
 
   return (
     <>
