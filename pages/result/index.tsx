@@ -22,6 +22,7 @@ const Result: NextPage = () => {
 
   const [agree, setAgree] = React.useState<string>("");
   const [disAgree, setDisAgree] = React.useState<string>("");
+
   const router = useRouter();
 
   const refresh = () => {
