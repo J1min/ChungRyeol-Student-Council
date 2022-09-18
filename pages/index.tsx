@@ -5,6 +5,7 @@ import * as S from "../styles/style";
 import useStore from "../context/useStore";
 import { POST_URL } from "../constant/URL";
 import type { NextPage } from "next";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -41,6 +42,9 @@ const Form: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>충렬학생의회 본투표</title>
+      </Head>
       <S.MainText>충렬학생의회 본투표</S.MainText>
 
       <S.GoRank href="/result" style={{ marginTop: "30px" }}>

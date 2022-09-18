@@ -9,6 +9,7 @@ import {
 } from "../../constant/URL";
 import * as S from "../../styles/style";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 type Student = {
   name: string;
@@ -51,6 +52,9 @@ const Result: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>투표 결과</title>
+      </Head>
       <S.StyledUl>
         <S.StyledLi>찬성 : {agree}</S.StyledLi>
         <S.StyledLi>반대 : {disAgree}</S.StyledLi>
