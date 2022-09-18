@@ -17,8 +17,8 @@ const Home: NextPage = () => {
     result: string;
   } = useStore();
 
-  const vote = async () => {
-    await axios.post(POST_URL, { name: name, result: result }).then((res) => {
+  const vote = () => {
+    axios.post(POST_URL, { name: name, result: result }).then(() => {
       router.push("/result");
     });
   };
