@@ -10,6 +10,7 @@ import {
 import * as S from "../../styles/style";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Chart from "../../components/chart";
 
 type Student = {
   name: string;
@@ -39,8 +40,6 @@ const Result: NextPage = () => {
   React.useEffect(() => {
     axios.get(GET_URL).then((res) => {
       setResult(res.data.result);
-
-      console.log(res.data.result);
     });
   }, []);
 
@@ -56,10 +55,8 @@ const Result: NextPage = () => {
       <Head>
         <title>투표 결과</title>
       </Head>
-      <S.StyledUl>
-        <S.StyledLi>찬성 : {agree}</S.StyledLi>
-        <S.StyledLi>반대 : {disAgree}</S.StyledLi>
-      </S.StyledUl>
+
+      <Chart agree={agree} disAgree={disAgree} />
 
       {result?.map((data, idx) => {
         return (

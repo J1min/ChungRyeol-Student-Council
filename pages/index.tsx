@@ -43,9 +43,9 @@ const Form: NextPage = () => {
   return (
     <>
       <Head>
-        <title>충렬학생의회 본투표</title>
+        <title>충렬학생의회 본회의</title>
       </Head>
-      <S.MainText>충렬학생의회 본투표</S.MainText>
+      <S.MainText>충렬학생의회 본회의</S.MainText>
 
       <S.GoRank href="/result" style={{ marginTop: "30px" }}>
         투표 결과 보기
