@@ -13,7 +13,7 @@ const Chart = ({
   const data = [
     { title: "찬성", value: agree, color: "#0044ff" },
     { title: "반대", value: disAgree, color: "#f63e3e" },
-    { title: "기권", value: giveUp, color: "black" },
+    { title: "기권", value: giveUp, color: "#cccccc" },
   ];
 
   return (
