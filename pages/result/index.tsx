@@ -58,23 +58,26 @@ const Result: NextPage = () => {
 
       <Chart agree={agree} disAgree={disAgree} />
 
-      {result?.map((data, idx) => {
-        return (
-          <S.StyledUl key={idx}>
-            <S.StyledLi
-              style={
-                data.result === "찬성"
-                  ? { color: "blue" }
-                  : data.result === "반대"
-                  ? { color: "red" }
-                  : { color: "black" }
-              }
-            >
-              {data.name}
-            </S.StyledLi>
-          </S.StyledUl>
-        );
-      })}
+      <S.ResultContainer>
+        {result?.map((data, idx) => {
+          return (
+            <S.StyledUl key={idx}>
+              <S.StyledLi
+                style={
+                  data.result === "찬성"
+                    ? { color: "blue" }
+                    : data.result === "반대"
+                    ? { color: "red" }
+                    : { color: "black" }
+                }
+              >
+                {data.name}
+              </S.StyledLi>
+            </S.StyledUl>
+          );
+        })}
+      </S.ResultContainer>
+
       <S.LoginInput
         style={{ margin: "30px auto", width: "200px" }}
         type="password"

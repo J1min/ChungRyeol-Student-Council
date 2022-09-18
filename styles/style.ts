@@ -108,3 +108,8 @@ export const GoRank = styled.a`
     text-decoration: underline;
   }
 `;
+
+export const ResultContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+`;
