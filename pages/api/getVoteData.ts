@@ -16,9 +16,13 @@ export default async function handler(
   let agree = 0;
   let disAgree = 0;
 
-  for (const r in result) {
-    console.log(r);
+  for (let i = 0; i < result.length; i++) {
+    if (result[i].result === "찬성") {
+      agree++;
+    } else if (result[i].result === "반대") {
+      disAgree++;
+    }
   }
 
-  res.status(200).json({ result });
+  res.status(200).json([agree, disAgree]);
 }

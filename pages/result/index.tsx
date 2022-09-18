@@ -8,6 +8,7 @@ import {
   GET_VOTE_URL,
 } from "../../constant/URL";
 import * as S from "../../styles/style";
+import { useRouter } from "next/router";
 
 type Student = {
   name: string;
@@ -20,6 +21,7 @@ const Result: NextPage = () => {
 
   const [agree, setAgree] = React.useState<string>("");
   const [disAgree, setDisAgree] = React.useState<string>("");
+  const router = useRouter();
 
   const refresh = () => {
     if (password !== ADMIN_PASSWORD) {
@@ -28,6 +30,7 @@ const Result: NextPage = () => {
     }
     axios.delete(DELETE_URL).then((res) => {
       alert("모든 투표결과를 삭제했습니다.");
+      router.reload();
     });
   };
 
@@ -41,8 +44,8 @@ const Result: NextPage = () => {
 
   React.useEffect(() => {
     axios.get(GET_VOTE_URL).then((res) => {
-      setAgree(res.data.agree);
-      setDisAgree(res.data.disagree);
+      setAgree(res.data[0]); // 찬성
+      setDisAgree(res.data[1]); // 반대
     });
   }, []);
 
