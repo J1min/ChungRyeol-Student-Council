@@ -15,14 +15,16 @@ export default async function handler(
   const result = await collection.find().toArray();
   let agree = 0;
   let disAgree = 0;
-
+  let giveUp = 0
   for (let i = 0; i < result.length; i++) {
     if (result[i].result === "찬성") {
       agree++;
     } else if (result[i].result === "반대") {
       disAgree++;
+    } else {
+      giveUp++;
     }
   }
 
-  return res.status(200).json([agree, disAgree]);
+  return res.status(200).json([agree, disAgree, giveUp]);
 }

@@ -24,9 +24,13 @@ const Home: NextPage = () => {
       alert("투표 비밀번호가 일치하지 않습니다.");
       return;
     }
-    axios.post(POST_URL, { name: name, result: result }).then(() => {
-      router.push("/result");
-    });
+    if (result == "찬성" || result == "반대" || result == "기권") {
+      axios.post(POST_URL, { name: name, result: result }).then(() => {
+        router.push("/result");
+      });
+    } else {
+      alert("값을 제대로 입력해주세요.");
+    }
   };
 
   return (
@@ -82,7 +86,7 @@ const Form: NextPage = () => {
           <S.LoginLabel>찬성 / 반대</S.LoginLabel>
           <S.LoginInput
             type="text"
-            placeholder="찬성 / 반대를 직접 입력해주세요."
+            placeholder="찬성 / 반대 / 기권을 직접 입력해주세요."
             onChange={(e: any) => {
               setResult(e.target.value);
             }}

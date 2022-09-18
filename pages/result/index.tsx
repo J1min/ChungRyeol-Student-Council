@@ -23,6 +23,7 @@ const Result: NextPage = () => {
 
   const [agree, setAgree] = React.useState<number>(0);
   const [disAgree, setDisAgree] = React.useState<number>(0);
+  const [giveUp, setGiveUp] = React.useState<number>(0);
 
   const router = useRouter();
 
@@ -37,6 +38,17 @@ const Result: NextPage = () => {
     });
   };
 
+  React.useEffect(() => {
+    axios.get(GET_URL).then((res) => {
+      setResult(res.data.result);
+    });
+    axios.get(GET_VOTE_URL).then((res) => {
+      setAgree(parseInt(res.data[0])); // 찬성
+      setDisAgree(parseInt(res.data[1])); // 반대
+      setGiveUp(parseInt(res.data[2])); // 기권
+    });
+  }, []);
+
   setInterval(function () {
     axios.get(GET_URL).then((res) => {
       setResult(res.data.result);
@@ -44,21 +56,9 @@ const Result: NextPage = () => {
     axios.get(GET_VOTE_URL).then((res) => {
       setAgree(parseInt(res.data[0])); // 찬성
       setDisAgree(parseInt(res.data[1])); // 반대
+      setGiveUp(parseInt(res.data[2])); // 기권
     });
   }, 2000);
-
-  React.useEffect(() => {
-    axios.get(GET_URL).then((res) => {
-      setResult(res.data.result);
-    });
-  }, []);
-
-  React.useEffect(() => {
-    axios.get(GET_VOTE_URL).then((res) => {
-      setAgree(parseInt(res.data[0])); // 찬성
-      setDisAgree(parseInt(res.data[1])); // 반대
-    });
-  }, []);
 
   return (
     <>
@@ -66,7 +66,7 @@ const Result: NextPage = () => {
         <title>투표 결과</title>
       </Head>
 
-      <Chart agree={agree} disAgree={disAgree} />
+      <Chart agree={agree} disAgree={disAgree} giveUp={giveUp} />
       <S.ResultContainer>
         {result?.map((data, idx) => {
           return (
