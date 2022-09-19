@@ -44,7 +44,9 @@ const Home: NextPage = () => {
         투표하기
       </S.LoginButton>
       <p style={{ color: "black", textAlign: "center" }}>
-        Copyright © BSSM J1min All rights reserved.
+        Copyright © BSSM{" "}
+        <a href="https://github.com/J1min/ChungRyeol-Student-Council">J1min</a>{" "}
+        All rights reserved.
       </p>
     </S.Container>
   );
