@@ -2,3 +2,11 @@
 
 ### <a href="https://github.com/J1min/ChungRyeol-Student-Council/tree/main/pages">Frontend</a>, <a href="https://github.com/J1min/ChungRyeol-Student-Council/tree/main/pages/api">Backend</a> 모두 Next.js 를 사용하여 개발하였으며, DB는 MongoDB Atlas(Free Tier)를 사용했습니다
 ### 개발은 전부 2022/9/18 하루에, <a href="https://github.com/J1min">혼자</a>서 하였습니다.
+
+<br />
+
+#### 사용 라이브러리
+
+* styled-components
+* chart.js
+
