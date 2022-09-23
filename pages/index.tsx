@@ -23,9 +23,12 @@ const Home: NextPage = () => {
       alert("투표 비밀번호가 일치하지 않습니다.");
       return;
     }
-    if (result == "찬성" || result == "반대" || result == "기권") {
+    if (
+      (result == "찬성" || result == "반대" || result == "기권") &&
+      process.env.POST_URL != undefined
+    ) {
       axios
-        .post(process.env.POST_URL || "", { name: name, result: result })
+        .post(process.env.POST_URL, { name: name, result: result })
         .then(() => {
           router.push("/result");
         });

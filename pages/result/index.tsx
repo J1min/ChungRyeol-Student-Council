@@ -27,21 +27,27 @@ const Result: NextPage = () => {
       alert("비밀번호가 틀렸습니다.");
       return;
     }
-    axios.delete(process.env.DELETE_URL || "").then((res) => {
-      alert("모든 투표결과를 삭제했습니다.");
-      return router.reload();
-    });
+    if (process.env.DELETE_URL != undefined) {
+      axios.delete(process.env.DELETE_URL).then((res) => {
+        alert("모든 투표결과를 삭제했습니다.");
+        return router.reload();
+      });
+    }
   };
 
   React.useEffect(() => {
-    axios.get(process.env.GET_URL || "").then((res) => {
-      setResult(res.data.result);
-    });
-    axios.get(process.env.GET_VOTE_URL || "").then((res) => {
-      setAgree(parseInt(res.data[0])); // 찬성
-      setDisAgree(parseInt(res.data[1])); // 반대
-      setGiveUp(parseInt(res.data[2])); // 기권
-    });
+    if (process.env.GET_URL != undefined) {
+      axios.get(process.env.GET_URL).then((res) => {
+        setResult(res.data.result);
+      });
+    }
+    if (process.env.GET_VOTE_URL != undefined) {
+      axios.get(process.env.GET_VOTE_URL).then((res) => {
+        setAgree(parseInt(res.data[0])); // 찬성
+        setDisAgree(parseInt(res.data[1])); // 반대
+        setGiveUp(parseInt(res.data[2])); // 기권
+      });
+    }
   }, []);
 
   // setInterval(function () {
