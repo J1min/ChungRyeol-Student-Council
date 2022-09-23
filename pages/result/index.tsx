@@ -1,8 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
 import axios from "axios";
-import { DELETE_URL, GET_URL, GET_VOTE_URL } from "../../constant/url";
-import { ADMIN_PASSWORD } from "../../constant/password";
 
 import * as S from "../../styles/style";
 import { useRouter } from "next/router";
@@ -25,21 +23,21 @@ const Result: NextPage = () => {
   const router = useRouter();
 
   const refresh = () => {
-    if (password !== ADMIN_PASSWORD) {
+    if (password !== process.env.ADMIN_PASSWORD) {
       alert("비밀번호가 틀렸습니다.");
       return;
     }
-    axios.delete(DELETE_URL).then((res) => {
+    axios.delete(process.env.DELETE_URL || "").then((res) => {
       alert("모든 투표결과를 삭제했습니다.");
-      router.reload();
+      return router.reload();
     });
   };
 
   React.useEffect(() => {
-    axios.get(GET_URL).then((res) => {
+    axios.get(process.env.GET_URL || "").then((res) => {
       setResult(res.data.result);
     });
-    axios.get(GET_VOTE_URL).then((res) => {
+    axios.get(process.env.GET_VOTE_URL || "").then((res) => {
       setAgree(parseInt(res.data[0])); // 찬성
       setDisAgree(parseInt(res.data[1])); // 반대
       setGiveUp(parseInt(res.data[2])); // 기권
