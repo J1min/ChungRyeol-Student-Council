@@ -1,12 +1,9 @@
 import React from "react";
 import type { NextPage } from "next";
 import axios from "axios";
-import {
-  DELETE_URL,
-  GET_URL,
-  ADMIN_PASSWORD,
-  GET_VOTE_URL,
-} from "../../constant/URL";
+import { DELETE_URL, GET_URL, GET_VOTE_URL } from "../../constant/url";
+import { ADMIN_PASSWORD } from "../../constant/password";
+
 import * as S from "../../styles/style";
 import { useRouter } from "next/router";
 import Head from "next/head";

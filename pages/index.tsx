@@ -3,7 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import * as S from "../styles/style";
 import useStore from "../context/useStore";
-import { POST_URL, ADMIN_VOTE_PASSWORD } from "../constant/URL";
+import { POST_URL } from "../constant/url";
+import { ADMIN_VOTE_PASSWORD } from "../constant/password";
 import type { NextPage } from "next";
 import Head from "next/head";
 
