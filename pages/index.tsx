@@ -5,6 +5,8 @@ import * as S from "../styles/style";
 import useStore from "../context/useStore";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { POST_URL } from "../constant/url";
+import { ADMIN_VOTE_PASSWORD } from "../constant/password";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -19,19 +21,14 @@ const Home: NextPage = () => {
   } = useStore();
 
   const vote = (votePassword: string) => {
-    if (votePassword !== process.env.ADMIN_VOTE_PASSWORD) {
+    if (votePassword !== ADMIN_VOTE_PASSWORD) {
       alert("투표 비밀번호가 일치하지 않습니다.");
       return;
     }
-    if (
-      (result == "찬성" || result == "반대" || result == "기권") &&
-      process.env.POST_URL != undefined
-    ) {
-      axios
-        .post(process.env.POST_URL, { name: name, result: result })
-        .then(() => {
-          router.push("/result");
-        });
+    if (result == "찬성" || result == "반대" || result == "기권") {
+      axios.post(POST_URL, { name: name, result: result }).then(() => {
+        router.push("/result");
+      });
     } else {
       alert("값을 제대로 입력해주세요.");
     }
