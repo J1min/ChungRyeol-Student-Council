@@ -28,6 +28,7 @@ const Home: NextPage = () => {
     votePassword: string
   ) => {
     if (!isVote) {
+      setIsVote(true);
       if (name === "") {
         alert("이름은 공백일 수 없습니다.");
         return;
