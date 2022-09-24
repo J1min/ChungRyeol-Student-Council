@@ -10,6 +10,7 @@ import { ADMIN_VOTE_PASSWORD } from "../constant/password";
 
 const Home: NextPage = () => {
   const router = useRouter();
+  const [isVote, setIsVote] = React.useState<boolean>(false);
   const {
     name,
     result,
@@ -20,20 +21,33 @@ const Home: NextPage = () => {
     votePassword: string;
   } = useStore();
 
-  const vote = (name: string, result: string, votePassword: string) => {
-    if (name === "") {
-      alert("이름은 공백일 수 없습니다.");
-    }
-    if (votePassword !== ADMIN_VOTE_PASSWORD) {
-      alert("투표 비밀번호가 일치하지 않습니다.");
-      return;
-    }
-    if (result == "찬성" || result == "반대" || result == "기권") {
-      axios.post(POST_URL, { name: name, result: result }).then(() => {
-        router.push("/result");
-      });
+  const vote = (
+    isVote: boolean,
+    name: string,
+    result: string,
+    votePassword: string
+  ) => {
+    if (!isVote) {
+      if (name === "") {
+        alert("이름은 공백일 수 없습니다.");
+        return;
+      }
+      if (votePassword !== ADMIN_VOTE_PASSWORD) {
+        alert("투표 비밀번호가 일치하지 않습니다.");
+        return;
+      }
+      if (result === "찬성" || result === "반대" || result === "기권") {
+        axios.post(POST_URL, { name: name, result: result }).then(() => {
+          router.push("/result");
+        });
+        return;
+      } else {
+        alert("찬성 / 반대 / 기권을 제대로 입력해주세요.");
+        return;
+      }
     } else {
-      alert("찬성 / 반대 / 기권을 제대로 입력해주세요.");
+      alert("투표 결과에 반영중입니다. 조금만 기다려주세요.");
+      return;
     }
   };
 
@@ -42,7 +56,7 @@ const Home: NextPage = () => {
       <Form />
       <S.LoginButton
         onClick={() => {
-          vote(name, result, votePassword);
+          vote(isVote, name, result, votePassword);
         }}
       >
         투표하기
