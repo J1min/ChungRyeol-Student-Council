@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         router.push("/result");
       });
     } else {
-      alert("값을 제대로 입력해주세요.");
+      alert("찬성 / 반대 / 기권을 제대로 입력해주세요.");
     }
   };
 
