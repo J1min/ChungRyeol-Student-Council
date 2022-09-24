@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const StyledLi = styled.p`
   list-style: none;
   text-align: center;
-  font-size: 60px;
+  font-size: 5rem;
 `;
 
 export const StyledUl = styled.ul`
