@@ -20,7 +20,10 @@ const Home: NextPage = () => {
     votePassword: string;
   } = useStore();
 
-  const vote = (votePassword: string) => {
+  const vote = (name: string, result: string, votePassword: string) => {
+    if (name === "") {
+      alert("이름은 공백일 수 없습니다.");
+    }
     if (votePassword !== ADMIN_VOTE_PASSWORD) {
       alert("투표 비밀번호가 일치하지 않습니다.");
       return;
@@ -39,7 +42,7 @@ const Home: NextPage = () => {
       <Form />
       <S.LoginButton
         onClick={() => {
-          vote(votePassword);
+          vote(name, result, votePassword);
         }}
       >
         투표하기
